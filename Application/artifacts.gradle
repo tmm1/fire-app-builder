@@ -8,7 +8,7 @@ android.applicationVariants.all { variant ->
         appName = parent.name
     }
 
-    variant.outputs.each { output ->
+    variant.outputs.all { output ->
         ;
         def newApkName
         if (output.zipAlign) {
@@ -16,6 +16,6 @@ android.applicationVariants.all { variant ->
         } else {
             newApkName = "${appName}-${output.baseName}-${variant.versionName}-unaligned.apk"
         }
-        output.outputFile = new File(output.outputFile.parent, newApkName)
+        output.outputFileName = new File(output.outputFileName, newApkName)
     }
 }
